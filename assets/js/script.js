@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let total = count.heads + count.tails
             document.querySelector(`#${result}`).textContent = count[result]
             // TODO: Calculate the total number of rolls/flips
-            document.querySelector(`#heads-percent`).textContent = (count.heads/total * 100) + "%"
-            document.querySelector(`#tails-percent`).textContent = (count.tails/total * 100) + "%"   
+            document.querySelector(`#heads-percent`).textContent = Math.round(count.heads/total * 100) + "%"
+            document.querySelector(`#tails-percent`).textContent = Math.round(count.tails/total * 100) + "%"   
         }
 
         if (Math.random() < .5){
@@ -33,7 +33,15 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     
     document.querySelector('#clear').addEventListener('click', function(e) {
-        console.log('clear the scoreboard')
+        count.heads = 0
+        count.tails = 0
+
+        document.querySelector('#heads').textContent = 0
+        document.querySelector('heads-percent').textContent = '0%'
+        document.querySelector('#tails').textContent = 0
+        document.querySelector('tails-percent').textContent = '0%'
+
+        document.querySelector('.message-container h3').textContent = "Let's Get Rolling!"
     })
     // Clear Button Click Handler
         // TODO: Reset global variables to 0
