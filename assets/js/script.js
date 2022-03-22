@@ -37,9 +37,9 @@ document.addEventListener('DOMContentLoaded', function () {
         count.tails = 0
 
         document.querySelector('#heads').textContent = 0
-        document.querySelector('heads-percent').textContent = '0%'
+        document.querySelector('#heads-percent').textContent = '0%'
         document.querySelector('#tails').textContent = 0
-        document.querySelector('tails-percent').textContent = '0%'
+        document.querySelector('#tails-percent').textContent = '0%'
 
         document.querySelector('.message-container h3').textContent = "Let's Get Rolling!"
     })
