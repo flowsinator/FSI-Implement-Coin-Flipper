@@ -6,34 +6,31 @@ let count = {
 document.addEventListener('DOMContentLoaded', function () {
     // TODO: Add event listener and handler for flip and clear buttons
     document.querySelector('#flip').addEventListener('click', function(e) {
-        if (Math.random() < .5){
-            console.log('heads')
-            count.heads++
+        // Flip Button Click Handler
+        function handleFlip(result) {
+            console.log(result) 
+            // TODO: Determine flip outcome
+            count[result]++
+            // TODO: Update image and status message in the DOM
             let img = document.querySelector('img')
-            img.src = `assets/images/penny-heads.jpg`
-            img.alt = `heads face of a penny`
+            img.src = `assets/images/penny-${result}.jpg`
+            img.alt = `${result} face of a penny`
             let message = document.querySelector('.message-container h3')
-            message.textContent = `You flipped heads!`
+            message.textContent = `You flipped ${result}!`
+            // Update the scorboard
             let total = count.heads + count.tails
-            document.querySelector('#heads').textContent = count.heads
-            document.querySelector('#heads-percent').textContent = (count.heads/total * 100) + "%"
-            document.querySelector('#tails-percent').textContent = (count.tails/total * 100) + "%"
+            document.querySelector(`#${result}`).textContent = count[result]
+            // TODO: Calculate the total number of rolls/flips
+            document.querySelector(`#heads-percent`).textContent = (count.heads/total * 100) + "%"
+            document.querySelector(`#tails-percent`).textContent = (count.tails/total * 100) + "%"   
+        }
+
+        if (Math.random() < .5){
+            handleFlip('heads')
         } else {
-            console.log('tails')
+            handleFlip('tails')
         }
     })
-
-    // Flip Button Click Handler
-    // TODO: Determine flip outcome
-    // TODO: Update image and status message in the DOM
-    
-    // Update the scorboard
-    // TODO: Calculate the total number of rolls/flips
-    // Make variables to track the percentages of heads and tails
-    // TODO: Use the calculated total to calculate the percentages
-    // HINT: Make sure not to divide by 0! (if total is 0, percent will be 0 as well)
-    // TODO: Update the display of each table cell
-    
     
     document.querySelector('#clear').addEventListener('click', function(e) {
         console.log('clear the scoreboard')
